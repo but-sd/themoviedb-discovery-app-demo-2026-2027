@@ -12,6 +12,6 @@ app.get('/', (_req: express.Request, res: express.Response) => {
 });
 
 // Start the server and listen on the specified port
-app.listen(port as number, () => {
+app.listen(port, () => {
   console.log(`Example app in TypeScript listening on port ${port}`);
 });
