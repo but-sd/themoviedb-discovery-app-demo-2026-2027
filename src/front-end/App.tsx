@@ -20,7 +20,10 @@ export default function App() {
   return (
     <main>
       <header>
-        <h1>Popular Movies</h1>
+        <h1>Films populaires</h1>
+        <h2>
+          Films tendances en France, d'après les données de <b>The Movie Database</b>
+        </h2>
       </header>
       {movies ? (
         <ul>
