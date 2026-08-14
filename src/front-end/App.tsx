@@ -18,8 +18,10 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Popular Movies</h1>
+    <main>
+      <header>
+        <h1>Popular Movies</h1>
+      </header>
       {movies ? (
         <ul>
           {movies.map((movie) => (
@@ -29,6 +31,6 @@ export default function App() {
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </main>
   );
 }
