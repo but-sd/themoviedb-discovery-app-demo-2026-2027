@@ -6,6 +6,7 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Base elements */
 * {
   box-sizing: border-box;
 }
@@ -22,7 +23,9 @@ img {
   max-width: 100%;
 }
 
+/* App layout */
 .app-shell {
+  /* Keeps comfortable page gutters while capping content width on large screens. */
   width: min(960px, calc(100% - 40px));
   margin: 0 auto;
   padding: 0 0 56px;
@@ -48,6 +51,7 @@ img {
   line-height: 1.45;
 }
 
+/* Movie grid */
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -104,6 +108,7 @@ img {
   color: #4b5c7d;
 }
 
+/* Responsive */
 @media (max-width: 820px) {
   .movie-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
