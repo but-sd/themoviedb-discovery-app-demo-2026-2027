@@ -18,21 +18,21 @@ export default function App() {
   }, []);
 
   return (
-    <main>
-      <header>
+    <main className="app-shell">
+      <header className="app-header">
         <h1>Films populaires</h1>
         <h2>
           Films tendances en France, d'après les données de <b>The Movie Database</b>
         </h2>
       </header>
       {movies ? (
-        <ul>
+        <ul className="movie-grid">
           {movies.map((movie) => (
             <MovieItem key={movie.id} movie={movie} />
           ))}
         </ul>
       ) : (
-        <p>Loading...</p>
+        <p className="status-message">Loading...</p>
       )}
     </main>
   );

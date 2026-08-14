@@ -6,14 +6,22 @@ type MovieItemProps = {
 
 export default function MovieItem({ movie }: MovieItemProps) {
   const releaseYear = movie.release_date.slice(0, 4);
-  const posterUrl = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
+  const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null;
+  const rating = movie.vote_average.toFixed(1);
 
   return (
-    <article>
-      <img src={posterUrl} alt={movie.title} />
-      <h2>{movie.title}</h2>
-      <p>Release Year: {releaseYear}</p>
-      <p>Rating: {movie.vote_average}</p>
-    </article>
+    <li className="movie-card">
+      {posterUrl ? (
+        <img className="movie-poster" src={posterUrl} alt={`Affiche de ${movie.title}`} />
+      ) : (
+        <div className="movie-poster movie-poster--fallback" aria-hidden="true" />
+      )}
+      <div className="movie-card__content">
+        <h2>{movie.title}</h2>
+        <p>
+          {releaseYear} · Rating {rating}
+        </p>
+      </div>
+    </li>
   );
 }
