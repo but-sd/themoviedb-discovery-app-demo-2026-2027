@@ -19,8 +19,8 @@ export default function App() {
   }, []);
 
   return (
-    <main className="app-shell">
-      <header className="app-header">
+    <main>
+      <header>
         <h1>Films populaires</h1>
         <h2>
           Films tendances en France, d'après les données de <b>The Movie Database</b>
