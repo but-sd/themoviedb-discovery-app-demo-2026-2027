@@ -5,12 +5,15 @@ type MovieItemProps = {
 };
 
 export default function MovieItem({ movie }: MovieItemProps) {
+  const releaseYear = movie.release_date.slice(0, 4);
+  const posterUrl = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
+
   return (
-    <li>
+    <article>
+      <img src={posterUrl} alt={movie.title} />
       <h2>{movie.title}</h2>
-      <p>{movie.overview}</p>
-      <p>Release Date: {movie.release_date}</p>
+      <p>Release Year: {releaseYear}</p>
       <p>Rating: {movie.vote_average}</p>
-    </li>
+    </article>
   );
 }
