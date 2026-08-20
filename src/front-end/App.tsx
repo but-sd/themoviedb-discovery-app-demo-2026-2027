@@ -3,6 +3,8 @@ import type { Movie } from "../back-end/schemas/MoviesTypes";
 import MovieItem from "./components/MovieItem";
 import { DEFAULT_LANGUAGE, DEFAULT_PAGE, DEFAULT_REGION } from "../back-end/constants";
 
+import "./app.css";
+
 export default function App() {
   // State to hold the fetched movies data, initialized to null
   const [movies, setMovies] = useState<Movie[] | null>(null);
@@ -25,8 +27,8 @@ export default function App() {
   }, [language, page, region]); // Dependencies for the useEffect hook
 
   return (
-    <main>
-      <header>
+    <main className="app-shell">
+      <header className="app-header">
         <h1>Films populaires</h1>
         <h2>
           Films tendances en France, d'après les données de <b>The Movie Database</b>
@@ -34,7 +36,7 @@ export default function App() {
       </header>
       <section>
         {movies ? (
-          <ul>
+          <ul className="movie-grid">
             {movies.map((movie) => (
               <li key={movie.id}>
                 <article>
@@ -44,7 +46,7 @@ export default function App() {
             ))}
           </ul>
         ) : (
-          <p>Loading...</p>
+          <p className="status-message">Loading...</p>
         )}
       </section>
     </main>
