@@ -20,6 +20,7 @@
     "lint:fix": "oxlint -c oxlint.config.ts --fix .",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
+    "test": "vitest run",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:client": "vite",
     "dev:server": "tsx watch src/back-end/index.ts",
@@ -47,7 +48,8 @@
     "oxlint": "^1.78.0",
     "tsx": "^4.23.1",
     "typescript": "^7.0.2",
-    "vite": "^8.2.1"
+    "vite": "^8.2.1",
+    "vitest": "^4.1.11"
   },
   "lint-staged": {
     "*": [
