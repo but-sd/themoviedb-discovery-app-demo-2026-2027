@@ -7,9 +7,7 @@ dotenv.config();
 const tmdbAccessToken: string | undefined = process.env.TMDB_ACCESS_TOKEN;
 
 if (!tmdbAccessToken) {
-  throw new Error(
-    "TMDB_ACCESS_TOKEN is not defined in the environment variables.",
-  );
+  throw new Error("TMDB_ACCESS_TOKEN is not defined in the environment variables.");
 }
 
 export { tmdbAccessToken };
