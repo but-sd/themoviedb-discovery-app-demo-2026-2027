@@ -13,13 +13,11 @@ export default defineConfig({
     include: ["src/back-end/**/*.test.ts"],
     exclude: ["node_modules/**"],
     // environment: 'jsdom',
-    // coverage: {
-    //   provider: 'v8',
-    //   include: [
-    //     'src/back-end/**/*.ts',
-    //   ],
-    //   exclude: [],
-    //   reporter: ['text', 'html'],
-    // },
+    coverage: {
+      provider: "v8",
+      include: ["src/back-end/**/*.ts"],
+      exclude: [],
+      reporter: ["text", "html"],
+    },
   },
 });
