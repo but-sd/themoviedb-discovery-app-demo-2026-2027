@@ -13,7 +13,7 @@ on:
 jobs:
   check-lint-and-format:
     runs-on: ubuntu-latest
-    name: "🧹 - check lint and format"
+    name: "🏗️ - check lint and format"
     steps:
       - name: "📥 Checkout repository"
         uses: actions/checkout@v6
@@ -23,7 +23,21 @@ jobs:
           node-version-file: .nvmrc
       - name: "📦 Install dependencies"
         run: npm ci
-      - name: "🧹 Run format check"
+      - name: "🎨 Run format check"
         run: npm run fmt:check
       - name: "🧹 Run lint"
         run: npm run lint
+  unit-tests:
+    runs-on: ubuntu-latest
+    name: "🧪 - run unit tests"
+    steps:
+      - name: "📥 Checkout repository"
+        uses: actions/checkout@v6
+      - name: "🛠️ Setup Node.js"
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - name: "📦 Install dependencies"
+        run: npm ci
+      - name: "🧪 Run unit tests"
+        run: npm test
