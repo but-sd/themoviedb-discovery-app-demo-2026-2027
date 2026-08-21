@@ -36,12 +36,46 @@
   list-style: none;
 }
 
+.movie-card-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 14px;
+}
+
+.movie-card-link:visited {
+  color: inherit;
+}
+
+.movie-card-link:hover,
+.movie-card-link:focus-visible {
+  color: inherit;
+  text-decoration: none;
+}
+
+.movie-card-link:focus-visible {
+  outline: 3px solid #2f6f95;
+  outline-offset: 4px;
+}
+
+.movie-card-link:hover .movie-card,
+.movie-card-link:focus-visible .movie-card {
+  transform: translateY(-2px);
+  border-color: #8eb2ca;
+  box-shadow: 0 12px 24px rgb(41 69 99 / 14%);
+}
+
 .movie-card {
   overflow: hidden;
   border: 1px solid #cbd8e4;
   border-radius: 14px;
   background: #fdfcf9;
   box-shadow: 0 8px 18px rgb(41 69 99 / 9%);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .movie-poster {
