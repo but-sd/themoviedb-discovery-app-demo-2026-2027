@@ -9,11 +9,6 @@ const app = express();
 // Define the port number for the server to listen on
 const port: number = 3000;
 
-// Define a route handler for the root URL ('/')
-app.get("/", (_req: express.Request, res: express.Response) => {
-  res.send("Hello World from TypeScript!");
-});
-
 // Define a route handler for fetching popular movies from TMDB API
 app.get("/api/movies/popular", async (_req: express.Request, res: express.Response) => {
   // Create a URLSearchParams object to build the query string for the TMDB API request
