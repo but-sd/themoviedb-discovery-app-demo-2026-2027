@@ -3,11 +3,15 @@ import { tmdbAccessToken } from "./config";
 import type { MoviesApiResponse, TmdbMoviesRawResponse } from "./schemas/MoviesTypes";
 import { toSupportedMovie } from "./utils";
 import { DEFAULT_LANGUAGE, DEFAULT_PAGE, DEFAULT_REGION } from "./constants";
+import { registerHealthApi } from "./src/back-end/health-api";
 // Create a new express application instance
 const app = express();
 
 // Define the port number for the server to listen on
 const port: number = 3000;
+
+// Register API routes from dedicated modules
+registerHealthApi(app);
 
 // Define a route handler for fetching popular movies from TMDB API
 app.get("/api/movies/popular", async (_req: express.Request, res: express.Response) => {
@@ -50,12 +54,6 @@ app.get("/api/movies/popular", async (_req: express.Request, res: express.Respon
     console.error("Error fetching popular movies:", error);
     res.status(500).json({ error: "Failed to fetch popular movies" });
   }
-});
-
-// Define a route handler for health check endpoint
-app.get("/api/health", (_req: express.Request, res: express.Response) => {
-  const response: { status: string } = { status: "ok" };
-  res.json(response);
 });
 
 // Start the server and listen on the specified port
