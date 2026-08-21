@@ -53,9 +53,7 @@
     "vitest": "^4.1.11"
   },
   "lint-staged": {
-    "*": [
-      "npm run fmt",
-      "npm run lint:fix"
-    ]
+    "*.{js,jsx,ts,tsx,json,css,html,md,yml,yaml}": "npm run fmt",
+    "*.{js,jsx,ts,tsx}": "npm run lint:fix"
   }
 }
