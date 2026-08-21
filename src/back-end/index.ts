@@ -1,7 +1,7 @@
 import express from "express";
 import { tmdbAccessToken } from "./config";
-import type { MoviesApiResponse, TmdbMoviesRawResponse } from "./schemas/MoviesTypes";
-import { toSupportedMovie } from "./utils";
+import type { MoviesApiResponse, TmdbMoviesRawResponse, TmdbMovieDetails, MovieDetails } from "./schemas/MoviesTypes";
+import { toSupportedMovie, toSupportedMovieDetails } from "./utils";
 import { DEFAULT_LANGUAGE, DEFAULT_PAGE, DEFAULT_REGION } from "./constants";
 // Create a new express application instance
 const app = express();
@@ -54,6 +54,35 @@ app.get("/api/movies/popular", async (_req: express.Request, res: express.Respon
   } catch (error) {
     console.error("Error fetching popular movies:", error);
     res.status(500).json({ error: "Failed to fetch popular movies" });
+  }
+});
+
+app.get("/api/movies/:id", async (_req: express.Request, res: express.Response) => {
+  const movieId = _req.params.id;
+
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}`, {
+      headers: {
+        Authorization: `Bearer ${tmdbAccessToken}`,
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`TMDB API request failed with status ${response.status}`);
+    }
+
+    // Parse the raw response from the TMDB API
+    const rawData = (await response.json()) as TmdbMovieDetails;
+
+    // Transform the raw data into the supported format for our application
+    const data: MovieDetails = toSupportedMovieDetails(rawData);
+
+    // Send the transformed data as a JSON response
+    res.json(data);
+  } catch (error) {
+    console.error(`Error fetching movie with ID ${movieId}:`, error);
+    res.status(500).json({ error: `Failed to fetch movie with ID ${movieId}` });
   }
 });
 
