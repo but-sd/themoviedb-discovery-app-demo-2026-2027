@@ -13,6 +13,10 @@ vi.mock("express", () => ({
   })),
 }));
 
+vi.mock("./config", () => ({
+  tmdbAccessToken: "test-access-token",
+}));
+
 // Import the code under test after setting up the mocks
 import "./index";
 
