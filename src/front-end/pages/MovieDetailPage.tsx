@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { MovieDetails } from "../../back-end/schemas/MoviesTypes";
+import MovieDetailCard from "../components/MovieDetailCard";
 
 export default function MovieDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -27,19 +28,7 @@ export default function MovieDetailPage() {
           ← Retour vers les films populaires
         </Link>
       </header>
-      <section>
-        {movie ? (
-          <div className="movie-details">
-            <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
-            <p>Release Date: {movie.release_date}</p>
-            <p>Rating: {movie.vote_average}</p>
-            {/* Add more movie details as needed */}
-          </div>
-        ) : (
-          <p className="status-message">Loading...</p>
-        )}
-      </section>
+      <section>{movie ? <MovieDetailCard movie={movie} /> : <p className="status-message">Loading...</p>}</section>
     </main>
   );
 }
