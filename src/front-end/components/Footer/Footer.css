@@ -1,0 +1,26 @@
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 20px 0 28px;
+  border-top: 1px solid rgb(69 85 118 / 25%);
+  color: #4b5c7d;
+  font:
+    600 0.82rem/1.4 "Avenir Next",
+    "Trebuchet MS",
+    sans-serif;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .app-footer {
+    width: min(100% - 32px, 960px);
+    flex-direction: column;
+    gap: 4px;
+  }
+}
