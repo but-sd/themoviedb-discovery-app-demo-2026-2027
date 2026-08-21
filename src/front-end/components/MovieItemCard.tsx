@@ -17,7 +17,7 @@ export default function MovieItemCard({ movie }: MovieItemProps) {
         <div className="movie-card__content">
           <h2>{movie.title}</h2>
           <p>
-            {releaseYear} · Rating {rating}
+            {releaseYear} · Note {rating}
           </p>
         </div>
       </div>
