@@ -1,4 +1,5 @@
 import type { Movie } from "../../../back-end/schemas/MoviesTypes";
+import "./MovieItemCard.css";
 import { Link } from "react-router";
 
 type MovieItemProps = {
@@ -13,7 +14,11 @@ export default function MovieItemCard({ movie }: MovieItemProps) {
   return (
     <Link to={`/movie/${movie.id}`} className="movie-card-link">
       <div className="movie-card">
-        {posterUrl ? <img className="movie-poster" src={posterUrl} alt={`Affiche de ${movie.title}`} /> : <div />}
+        {posterUrl ? (
+          <img className="movie-poster" src={posterUrl} alt={`Affiche de ${movie.title}`} />
+        ) : (
+          <div className="movie-poster movie-poster--fallback" aria-hidden="true" />
+        )}
         <div className="movie-card__content">
           <h2>{movie.title}</h2>
           <p>
