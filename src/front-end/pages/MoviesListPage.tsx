@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Movie } from "../../back-end/schemas/MoviesTypes";
 import { DEFAULT_LANGUAGE, DEFAULT_PAGE, DEFAULT_REGION } from "../../back-end/constants";
-import MovieItemCard from "../components/MovieItemCard";
+import MovieItemCard from "../components/MovieItemCard/MovieItemCard";
 
 export default function MoviesListPage() {
   // State to hold the fetched movies data, initialized to null
