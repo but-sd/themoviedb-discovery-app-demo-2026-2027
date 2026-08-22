@@ -31,7 +31,7 @@ export default function MovieDetailCard({ movie }: { movie: MovieDetails }) {
             <dd>{rating}</dd>
           </div>
         </dl>
-        {movie.genres.length > 0 && (
+        {Array.isArray(movie.genres) && movie.genres.length > 0 && (
           <section className="movie-detail-section">
             <h2>Genres</h2>
             <ul className="movie-detail-genres">
