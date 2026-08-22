@@ -10,7 +10,7 @@ export const movie1: Movie = {
   popularity: 8.5,
   poster_path: "/path/to/poster.jpg",
   release_date: "2024-01-01",
-  title: "Film1 Title",
+  title: "Titre du Film Movie1",
   vote_average: 7.8,
   vote_count: 1500,
 };
@@ -35,7 +35,7 @@ export const movie2: Movie = {
   popularity: 7.2,
   poster_path: "/path/to/poster2.jpg",
   release_date: "2024-02-01",
-  title: "Titre du Film",
+  title: "Titre Original du Film",
   vote_average: 6.5,
   vote_count: 800,
 };
