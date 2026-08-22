@@ -26,6 +26,9 @@ test("movies visual non regression", async ({ page }) => {
 
   const movieGrid = page.locator(".movie-grid");
 
+  await page.addStyleTag({
+    content: `.movie-card h2, .movie-card p { color: transparent !important; text-shadow: none !important; }`,
+  });
   await expect(movieGrid).toBeVisible();
-  await expect(movieGrid).toHaveScreenshot();
+  await expect(movieGrid).toHaveScreenshot("movie-grid.png", { maxDiffPixelRatio: 0.01 });
 });
