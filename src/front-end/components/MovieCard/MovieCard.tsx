@@ -1,12 +1,12 @@
 import type { Movie } from "../../../back-end/schemas/MoviesTypes";
-import "./MovieItemCard.css";
+import "./MovieCard.css";
 import { Link } from "react-router";
 
 type MovieItemProps = {
   movie: Movie;
 };
 
-export default function MovieItemCard({ movie }: MovieItemProps) {
+export default function MovieCard({ movie }: MovieItemProps) {
   const releaseYear = movie.release_date.slice(0, 4);
   const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w185${movie.poster_path}` : null;
   const rating = movie.vote_average.toFixed(1);

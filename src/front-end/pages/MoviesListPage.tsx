@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Movie } from "../../back-end/schemas/MoviesTypes";
 import { DEFAULT_LANGUAGE, DEFAULT_PAGE, DEFAULT_REGION } from "../../back-end/constants";
-import MovieItemCard from "../components/MovieItemCard/MovieItemCard";
+import MovieCard from "../components/MovieCard/MovieCard";
 
 export default function MoviesListPage() {
   // State to hold the fetched movies data, initialized to null
@@ -37,7 +37,7 @@ export default function MoviesListPage() {
           <ul className="movie-grid">
             {movies.map((movie) => (
               <li key={movie.id}>
-                <MovieItemCard movie={movie} />
+                <MovieCard movie={movie} />
               </li>
             ))}
           </ul>
