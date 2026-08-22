@@ -20,22 +20,22 @@ describe("MovieDetailCard component", () => {
     expect(screen.getByText("7.8")).toBeTruthy();
     expect(screen.getByText(movie1Details.overview)).toBeTruthy();
 
-    // const genresList = screen.getByRole("list");
-    // movie1Details.genres.forEach((genre) => {
-    //     expect(genresList).toHaveTextContent(genre.name);
-    // });
+    const genresList = screen.getByRole("list", { name: "list-genre" });
+    movie1Details.genres.forEach((genre) => {
+      expect(genresList.textContent?.includes(genre.name)).toBe(true);
+    });
   });
 
   it("renders a fallback poster when poster_path is null", () => {
     const movieWithoutPoster = { ...movie1Details, poster_path: null };
 
-    render(
+    const { container } = render(
       <MemoryRouter>
         <MovieDetailCard movie={movieWithoutPoster} />
       </MemoryRouter>,
     );
 
-    const fallbackPoster = screen.getByRole("img", { hidden: true });
+    const fallbackPoster = container.querySelector(".movie-detail-hero-placeholder");
     expect(fallbackPoster).toBeTruthy();
   });
 });

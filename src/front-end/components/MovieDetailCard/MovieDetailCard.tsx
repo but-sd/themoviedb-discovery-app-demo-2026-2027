@@ -34,7 +34,7 @@ export default function MovieDetailCard({ movie }: { movie: MovieDetails }) {
         {Array.isArray(movie.genres) && movie.genres.length > 0 && (
           <section className="movie-detail-section">
             <h2>Genres</h2>
-            <ul className="movie-detail-genres">
+            <ul className="movie-detail-genres" aria-label="list-genre">
               {movie.genres.map((genre) => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
