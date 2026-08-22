@@ -12,20 +12,22 @@ export default function MovieItemCard({ movie }: MovieItemProps) {
   const rating = movie.vote_average.toFixed(1);
 
   return (
-    <Link to={`/movie/${movie.id}`} className="movie-card-link">
-      <div className="movie-card">
-        {posterUrl ? (
-          <img className="movie-poster" src={posterUrl} alt={`Affiche de ${movie.title}`} />
-        ) : (
-          <div className="movie-poster movie-poster--fallback" aria-hidden="true" />
-        )}
-        <div className="movie-card__content">
-          <h2>{movie.title}</h2>
-          <p>
-            {releaseYear} · Note {rating}
-          </p>
+    <article aria-label={`Film ${movie.title}`}>
+      <Link to={`/movie/${movie.id}`} className="movie-card-link">
+        <div className="movie-card">
+          {posterUrl ? (
+            <img className="movie-poster" src={posterUrl} alt={`Affiche de ${movie.title}`} />
+          ) : (
+            <div className="movie-poster movie-poster--fallback" aria-hidden="true" />
+          )}
+          <div className="movie-card__content">
+            <h2>{movie.title}</h2>
+            <p>
+              {releaseYear} · Note {rating}
+            </p>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </article>
   );
 }

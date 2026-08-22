@@ -37,9 +37,7 @@ export default function MoviesListPage() {
           <ul className="movie-grid">
             {movies.map((movie) => (
               <li key={movie.id}>
-                <article>
-                  <MovieItemCard movie={movie} />
-                </article>
+                <MovieItemCard movie={movie} />
               </li>
             ))}
           </ul>

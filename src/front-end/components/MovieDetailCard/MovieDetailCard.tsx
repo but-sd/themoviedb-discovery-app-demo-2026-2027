@@ -1,5 +1,5 @@
-import type { MovieDetails } from "../../back-end/schemas/MoviesTypes";
-import "./MovieDetailCard/MovieDetailCard.css";
+import type { MovieDetails } from "../../../back-end/schemas/MoviesTypes";
+import "./MovieDetailCard.css";
 
 export default function MovieDetailCard({ movie }: { movie: MovieDetails }) {
   const releaseYear = movie.release_date.slice(0, 4);
@@ -7,7 +7,7 @@ export default function MovieDetailCard({ movie }: { movie: MovieDetails }) {
   const rating = movie.vote_average.toFixed(1);
 
   return (
-    <article className="movie-detail-card">
+    <article className="movie-detail-card" aria-label={`Détails du film ${movie.title}`}>
       <figure className="movie-detail-hero-container">
         {posterUrl ? (
           <img className="movie-detail-hero" src={posterUrl} alt={`Affiche de ${movie.title}`} />
