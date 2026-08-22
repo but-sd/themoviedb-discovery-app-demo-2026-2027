@@ -1,3 +1,3 @@
 {
-  "recommendations": ["vitest.explorer", "ms-playwright.playwright"]
+  "recommendations": ["vitest.vitest", "ms-playwright.playwright"]
 }
