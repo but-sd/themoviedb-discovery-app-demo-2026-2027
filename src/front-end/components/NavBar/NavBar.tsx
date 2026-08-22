@@ -9,10 +9,10 @@ export default function NavBar() {
 
         <div className="app-nav-links">
           <NavLink className={({ isActive }) => `app-nav-link${isActive ? " app-nav-link-active" : ""}`} to="/movies">
-            Movies
+            Films populaires
           </NavLink>
           <NavLink className={({ isActive }) => `app-nav-link${isActive ? " app-nav-link-active" : ""}`} to="/about">
-            About
+            À propos
           </NavLink>
         </div>
       </div>
