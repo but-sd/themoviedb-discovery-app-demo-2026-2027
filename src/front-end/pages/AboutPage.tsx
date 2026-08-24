@@ -18,7 +18,7 @@ export default function AboutPage() {
         </div>
         <p>
           Cette application utilise l'API de <strong>T</strong>he <strong>M</strong>ovie <strong>D</strong>ata
-          <strong>B</strong>ase pour rendre les films populaires faciles à explorer. Elle démontre la construction d'une
+          <strong>b</strong>ase pour rendre les films populaires faciles à explorer. Elle démontre la construction d'une
           application complète, du front-end à l'API.
         </p>
       </section>
