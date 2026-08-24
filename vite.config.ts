@@ -14,9 +14,9 @@ export default defineConfig({
     },
   },
   test: {
-    include: ["src/back-end/**/*.test.ts", "src/front-end/**/*.test.tsx"],
+    include: ["src/back-end/**/*.test.ts", "src/front-end/**/*.test.tsx", "src/front-end/**/*.test.ts"],
     coverage: {
-      include: ["src/back-end/**/*.ts", "src/front-end/**/*.tsx"],
+      include: ["src/back-end/**/*.ts", "src/front-end/**/*.tsx", "src/front-end/**/*.ts"],
       exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.d.ts"],
     },
   },
