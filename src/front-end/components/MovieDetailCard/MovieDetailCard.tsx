@@ -1,10 +1,11 @@
 import type { MovieDetails } from "../../../back-end/schemas/MoviesTypes";
+import { getReleaseYear, getPosterUrl, getRating } from "../MovieUtils";
 import "./MovieDetailCard.css";
 
 export default function MovieDetailCard({ movie }: { movie: MovieDetails }) {
-  const releaseYear = movie.release_date.slice(0, 4);
-  const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : null;
-  const rating = movie.vote_average.toFixed(1);
+  const releaseYear = getReleaseYear(movie.release_date);
+  const posterUrl = getPosterUrl(movie.poster_path, "w300");
+  const rating = getRating(movie.vote_average);
 
   return (
     <article className="movie-detail-card" aria-label={`Détails du film ${movie.title}`}>
