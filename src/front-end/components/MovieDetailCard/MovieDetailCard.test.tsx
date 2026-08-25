@@ -16,8 +16,8 @@ describe("MovieDetailCard component", () => {
 
     expect(screen.getByRole("article", { name: `Détails du film ${movie1Details.title}` })).toBeTruthy();
     expect(screen.getByRole("heading", { name: movie1Details.title })).toBeTruthy();
-    expect(screen.getByText("2024")).toBeTruthy();
-    expect(screen.getByText("7.8")).toBeTruthy();
+    expect(screen.getByText("2026")).toBeTruthy();
+    expect(screen.getByText("7.9")).toBeTruthy();
     expect(screen.getByText(movie1Details.overview)).toBeTruthy();
 
     const genresList = screen.getByRole("list", { name: "list-genre" });

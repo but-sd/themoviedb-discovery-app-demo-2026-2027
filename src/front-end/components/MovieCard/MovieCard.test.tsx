@@ -16,7 +16,7 @@ describe("MovieCard component", () => {
 
     expect(screen.getByRole("article", { name: `Film ${movie1.title}` })).toBeTruthy();
     expect(screen.getByRole("heading", { name: movie1.title })).toBeTruthy();
-    expect(screen.getByText("2024 · Note 7.8")).toBeTruthy();
+    expect(screen.getByText("2026 · Note 7.9")).toBeTruthy();
 
     const movieLink = screen.getByRole("link", { name: new RegExp(movie1.title) });
     expect(movieLink.getAttribute("href")).toBe(`/movie/${movie1.id}`);
