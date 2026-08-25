@@ -1,13 +1,14 @@
-import type { MovieDetails } from "../../back-end/schemas/MoviesTypes";
-import "./MovieDetailCard/MovieDetailCard.css";
+import type { MovieDetails } from "../../../back-end/schemas/MoviesTypes";
+import { getReleaseYear, getPosterUrl, getRating } from "../MovieUtils";
+import "./MovieDetailCard.css";
 
 export default function MovieDetailCard({ movie }: { movie: MovieDetails }) {
-  const releaseYear = movie.release_date.slice(0, 4);
-  const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : null;
-  const rating = movie.vote_average.toFixed(1);
+  const releaseYear = getReleaseYear(movie.release_date);
+  const posterUrl = getPosterUrl(movie.poster_path, "w300");
+  const rating = getRating(movie.vote_average);
 
   return (
-    <article className="movie-detail-card">
+    <article className="movie-detail-card" aria-label={`Détails du film ${movie.title}`}>
       <figure className="movie-detail-hero-container">
         {posterUrl ? (
           <img className="movie-detail-hero" src={posterUrl} alt={`Affiche de ${movie.title}`} />
@@ -31,10 +32,10 @@ export default function MovieDetailCard({ movie }: { movie: MovieDetails }) {
             <dd>{rating}</dd>
           </div>
         </dl>
-        {movie.genres.length > 0 && (
+        {Array.isArray(movie.genres) && movie.genres.length > 0 && (
           <section className="movie-detail-section">
             <h2>Genres</h2>
-            <ul className="movie-detail-genres">
+            <ul className="movie-detail-genres" aria-label="list-genre">
               {movie.genres.map((genre) => (
                 <li key={genre.id}>{genre.name}</li>
               ))}

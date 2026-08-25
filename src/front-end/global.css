@@ -14,7 +14,14 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  padding-bottom: 58px;
   background: linear-gradient(112deg, #fff1c9 0%, #fbf6e8 48%, #cdeeff 100%);
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 92px;
+  }
 }
 
 img {
