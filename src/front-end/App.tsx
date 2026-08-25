@@ -5,6 +5,7 @@ import MovieDetailPage from "./pages/MovieDetailPage";
 import MoviesListPage from "./pages/MoviesListPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AboutPage from "./pages/AboutPage";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
