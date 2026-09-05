@@ -1,68 +1,62 @@
-// TypeScript type for the raw response from the TMDB API for popular movies.
-export type TmdbMoviesRawResponse = {
-  page: number;
-  results: Array<TmdbMovie & { video?: boolean }>;
-  total_pages: number;
-  total_results: number;
-};
+import { z } from "./zod";
 
-// TypeScript type for the raw response from the TMDB API for popular movies.
-export type TmdbMovie = {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
+const TmdbMovieBaseSchema = z.object({
+  adult: z.boolean(),
+  backdrop_path: z.string().nullable(),
+  id: z.number().int(),
+  original_language: z.string(),
+  original_title: z.string(),
+  overview: z.string(),
+  popularity: z.number(),
+  poster_path: z.string().nullable(),
+  release_date: z.string().date(),
+  title: z.string(),
+  video: z.boolean().optional(),
+  vote_average: z.number(),
+  vote_count: z.number().int(),
+});
+export const TmdbMovieSchema = TmdbMovieBaseSchema.extend({
+  genre_ids: z.array(z.number().int()),
+});
 
-export type TmdbMovieDetails = {
-  adult: boolean;
-  backdrop_path: string | null;
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-  genres: Array<{ id: number; name: string }>;
-  tagline: string | null;
-  production_companies: Array<{
-    id: number;
-    logo_path: string | null;
-    name: string;
-    origin_country: string;
-  }>;
-};
+export const TmdbMoviesRawResponseSchema = z.object({
+  page: z.number().int(),
+  results: z.array(TmdbMovieSchema),
+  total_pages: z.number().int(),
+  total_results: z.number().int(),
+});
 
-// TypeScript type for the API response when fetching movies, containing an array of supported Movie objects.
-export type MoviesApiResponse = {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-};
+export const TmdbMovieDetailsSchema = TmdbMovieBaseSchema.extend({
+  genres: z.array(z.object({ id: z.number().int(), name: z.string() })),
+  tagline: z.string().nullable(),
+  production_companies: z.array(
+    z.object({
+      id: z.number().int(),
+      logo_path: z.string().nullable(),
+      name: z.string(),
+      origin_country: z.string(),
+    }),
+  ),
+});
 
-// TypeScript type for the supported movie format used in our application, omitting 'adult' and 'video' properties from the TmdbMovie type.
-export type Movie = Omit<TmdbMovie, "adult" | "video">;
+export const MovieSchema = TmdbMovieSchema.omit({ adult: true, video: true });
+export const MovieDetailsSchema = TmdbMovieDetailsSchema.omit({
+  adult: true,
+  video: true,
+  production_companies: true,
+});
+export const MoviesApiResponseSchema = z.object({
+  page: z.number().int(),
+  results: z.array(MovieSchema),
+  total_pages: z.number().int(),
+  total_results: z.number().int(),
+});
+export const ApiErrorResponseSchema = z.object({ error: z.string() });
 
-// TypeScript type for the supported movie details format used in our application, omitting 'adult','video' and production_companies properties from the TmdbMovieDetails type.
-export type MovieDetails = Omit<TmdbMovieDetails, "adult" | "video" | "production_companies">;
-
-// TypeScript type for the API response when fetching popular movies, containing an array of supported Movie objects.
-export type ApiErrorResponse = {
-  error: string;
-};
+export type TmdbMovie = z.infer<typeof TmdbMovieSchema>;
+export type TmdbMoviesRawResponse = z.infer<typeof TmdbMoviesRawResponseSchema>;
+export type TmdbMovieDetails = z.infer<typeof TmdbMovieDetailsSchema>;
+export type Movie = z.infer<typeof MovieSchema>;
+export type MovieDetails = z.infer<typeof MovieDetailsSchema>;
+export type MoviesApiResponse = z.infer<typeof MoviesApiResponseSchema>;
+export type ApiErrorResponse = z.infer<typeof ApiErrorResponseSchema>;
