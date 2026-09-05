@@ -1,20 +1,27 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 // Mock the necessary modules and functions
-const { getMock, listenMock } = vi.hoisted(() => ({
+const { getMock, listenMock, useMock } = vi.hoisted(() => ({
   getMock: vi.fn(),
   listenMock: vi.fn(),
+  useMock: vi.fn(),
 }));
 
 vi.mock("express", () => ({
   default: vi.fn(() => ({
     get: getMock,
     listen: listenMock,
+    use: useMock,
   })),
 }));
 
 vi.mock("./config", () => ({
   tmdbAccessToken: "test-access-token",
+}));
+
+vi.mock("swagger-ui-express", () => ({
+  serve: [vi.fn()],
+  setup: vi.fn(() => vi.fn()),
 }));
 
 // Import the code under test after setting up the mocks
@@ -30,6 +37,7 @@ const routeHandlers = new Map<string, RouteHandler>(
 
 // Check if the server was started on the expected port
 const serverWasStarted = listenMock.mock.calls.some(([port]) => port === 3000);
+const swaggerUiWasRegistered = useMock.mock.calls.some(([path]) => path === "/api-docs");
 
 describe("back-end server routes", () => {
   // Clear mocks before each test to ensure isolation
@@ -56,6 +64,14 @@ describe("back-end server routes", () => {
 
     it("registers the /api/movies/:id route", () => {
       expect(routeHandlers.has("/api/movies/:id")).toBe(true);
+    });
+
+    it("registers the OpenAPI document route", () => {
+      expect(routeHandlers.has("/api-docs/openapi.json")).toBe(true);
+    });
+
+    it("registers the Swagger UI route", () => {
+      expect(swaggerUiWasRegistered).toBe(true);
     });
   });
 });
