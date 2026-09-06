@@ -4,5 +4,6 @@
     "vscode": {
       "extensions": ["mhutchie.git-graph", "vitest.vitest"]
     }
-  }
+  },
+  "postCreateCommand": "if [ -n \"$TMDB_ACCESS_TOKEN\" ]; then printf 'TMDB_ACCESS_TOKEN=%s\\n' \"$TMDB_ACCESS_TOKEN\" > .env; else echo 'TMDB_ACCESS_TOKEN is not set. Add it as a Codespaces secret.' >&2; fi"
 }
