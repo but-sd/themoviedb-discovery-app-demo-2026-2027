@@ -16,6 +16,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "bootstrap:backlog": "node scripts/bootstrap-backlog.mjs",
     "lint": "oxlint -c oxlint.config.ts .",
     "lint:fix": "oxlint -c oxlint.config.ts --fix .",
     "fmt": "oxfmt",
@@ -45,6 +46,7 @@
     "concurrently": "^10.0.4",
     "devmoji": "^2.3.0",
     "husky": "^9.1.7",
+    "js-yaml": "^4.3.2",
     "lint-staged": "^17.3.0",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",

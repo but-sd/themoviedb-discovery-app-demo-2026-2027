@@ -1,0 +1,24 @@
+labels:
+  - name: "setup"
+    color: "5319E7"
+    description: "Installation, configuration et prise en main du projet"
+
+  - name: "feature"
+    color: "0E8A16"
+    description: "Nouvelle fonctionnalité produit"
+
+  - name: "api"
+    color: "1D76DB"
+    description: "Travail lié aux appels API ou au back-end"
+
+  - name: "frontend"
+    color: "FBCA04"
+    description: "Travail lié à l'interface utilisateur"
+
+  - name: "mandatory"
+    color: "B60205"
+    description: "Ticket obligatoire"
+
+  - name: "bonus"
+    color: "C2E0C6"
+    description: "Ticket optionnel ou d'approfondissement"

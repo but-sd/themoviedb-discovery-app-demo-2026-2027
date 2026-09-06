@@ -1,0 +1,129 @@
+project:
+  title: "Movie DB Discovery - Backlog"
+  status: "Todo"
+  fields:
+    - name: "Poids"
+      type: "single_select"
+      options:
+        - name: "XS"
+          color: "green"
+          description: "Très petit ticket"
+
+        - name: "S"
+          color: "blue"
+          description: "Petit ticket"
+
+        - name: "M"
+          color: "yellow"
+          description: "Ticket moyen"
+
+        - name: "L"
+          color: "orange"
+          description: "Gros ticket"
+
+        - name: "XL"
+          color: "red"
+          description: "Très gros ticket"
+
+  views:
+    - name: "Backlog étudiant"
+      layout: "board"
+      visibleFields:
+        - "Title"
+        - "Status"
+        - "Poids"
+        - "Labels"
+        - "Milestone"
+
+    - name: "Sprint courant"
+      layout: "table"
+      filter: 'milestone:"Sprint 1"'
+      visibleFields:
+        - "Title"
+        - "Status"
+        - "Poids"
+        - "Labels"
+        - "Milestone"
+
+    - name: "Bonus"
+      layout: "table"
+      filter: "label:bonus"
+      visibleFields:
+        - "Title"
+        - "Status"
+        - "Poids"
+        - "Labels"
+        - "Milestone"
+
+milestones:
+  - title: "Sprint 1"
+    description: "Prise en main du projet et premières fonctionnalités visibles."
+
+  - title: "Sprint 2"
+    description: "Fonctionnalités de navigation et enrichissement de l'expérience utilisateur."
+
+tickets:
+  - id: "setup-local"
+    title: "Initialiser le projet en local"
+    weight: "XS"
+    body: |
+      En tant qu'étudiant, je veux pouvoir installer les dépendances et lancer l'application en local afin de commencer à développer.
+
+      Critères d'acceptation :
+      - `npm install` s'exécute sans erreur.
+      - `npm run dev` lance le serveur et le client.
+      - La page d'accueil est accessible dans le navigateur.
+    labels:
+      - "setup"
+      - "mandatory"
+    milestone: "Sprint 1"
+
+  - id: "popular-movies"
+    title: "Afficher une liste de films populaires"
+    weight: "M"
+    body: |
+      En tant qu'utilisateur, je veux voir une liste de films populaires afin de découvrir rapidement des contenus.
+
+      Critères d'acceptation :
+      - La liste des films est affichée sur la page principale.
+      - Chaque film présente au minimum un titre et une affiche lorsque disponible.
+      - Un état d'erreur est prévu si la récupération échoue.
+    labels:
+      - "feature"
+      - "api"
+      - "frontend"
+      - "mandatory"
+    milestone: "Sprint 1"
+
+  - id: "movie-detail"
+    title: "Consulter le détail d'un film"
+    weight: "M"
+    body: |
+      En tant qu'utilisateur, je veux ouvrir la fiche détaillée d'un film afin de consulter ses informations principales.
+
+      Critères d'acceptation :
+      - Un clic sur un film ouvre une page de détail.
+      - La page affiche le titre, le résumé, la date de sortie et la note lorsque disponibles.
+      - Une page d'erreur ou un message adapté est affiché si le film est introuvable.
+    labels:
+      - "feature"
+      - "frontend"
+      - "mandatory"
+    milestone: "Sprint 2"
+
+  - id: "search-movies"
+    title: "Rechercher un film"
+    weight: "L"
+    body: |
+      En tant qu'utilisateur, je veux rechercher un film par son titre afin de trouver rapidement un contenu précis.
+
+      Critères d'acceptation :
+      - Un champ de recherche est disponible.
+      - Les résultats correspondent au texte saisi.
+      - Un état vide est affiché lorsqu'aucun film ne correspond.
+    labels:
+      - "feature"
+      - "api"
+      - "frontend"
+      - "bonus"
+    milestone: "Sprint 2"
